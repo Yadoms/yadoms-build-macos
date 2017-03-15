@@ -79,7 +79,6 @@ before_install:
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/configure"; else ./configure --enable-shared=no --prefix=$HOME/depsBuild/protobuf --with-pic > $HOME/logs/yadoms_protobuf.log; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/make"; else make > $HOME/logs/yadoms_protobuf.log; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/make install"; else make install > $HOME/logs/yadoms_protobuf.log; fi
-- if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/ldconfig"; else sudo ldconfig > $HOME/logs/yadoms_protobuf.log; fi
 - if [ ${GENERATE_PROTOBUF} != true ]; then echo "Bypass protobuf/cd.."; else cd ..; fi
 - if [ ${GENERATE_PROTOBUF} = true ]; then tar cjf protobuf-3.2.0-build.tar.bz2 -C $HOME/depsBuild protobuf; fi
 - if [ ${GENERATE_PROTOBUF} = true ]; then curl --ftp-create-dirs -T protobuf-3.2.0-build.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}; fi
