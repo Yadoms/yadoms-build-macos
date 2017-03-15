@@ -10,7 +10,8 @@ before_install:
 # deps
 - echo 'Installing some dependencies'
 - brew update
-- brew install pcre swig gammu 
+#dont install pcre because already installed
+- brew install swig gammu 
 
 #make dir
 - mkdir -p $HOME/depsBuild
