@@ -9,7 +9,8 @@ git:
 before_install:
 # deps
 - echo 'Installing some dependencies'
-- sudo brew install pcre swig gammu 
+- brew update
+- brew install pcre swig gammu 
 
 #make dir
 - mkdir -p $HOME/depsBuild
