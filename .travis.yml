@@ -170,8 +170,8 @@ script:
 - echo 'set(PostgreSQL_ROOT ' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/interfaces/libpq"' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo '       "'$PWD'/postgresql-9.6.2/src/include")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(GAMMU_ROOT "'$PWD'/gammu-1.38.1")' >> yadoms/sources/CMakeListsUserConfig.txt
-- echo 'set(SWIG_ROOT "'$PWD'/swig-3.0.12")' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(GAMMU_ROOT "'$PWD'/gammu-1.38.1")' >> yadoms/sources/CMakeListsUserConfig.txt
+#- echo 'set(SWIG_ROOT "'$PWD'/swig-3.0.12")' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'SET(COTIRE_USE ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'SET(COTIRE_USE_UNITY ON)' >> yadoms/sources/CMakeListsUserConfig.txt
 - echo 'Result:'
