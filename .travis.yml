@@ -177,15 +177,14 @@ script:
 - echo 'Result:'
 - cat yadoms/sources/CMakeListsUserConfig.txt
 
-# Setup package output to be realized with unity targets
-- echo 'set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY TRUE)' >> yadoms/sources/CMakeLists.txt
-
 # Yadoms
 - cd yadoms
 - echo 'Generating makefile'
-- sh cmake_macosx.sh x
+- sh cmake_macosx.sh m
 - echo 'Building Yadoms'
-- cmake --build projects --target all_unity
+- cd projects
+- make all_unity
+- cd ..
 
 after_failure:  # this will of course run only on failure
 # Package logs
@@ -198,7 +197,7 @@ after_success: # and this only on success
 # Make Package => should not be executed if "make all_unity" is done before; 
 - cd projects
 - echo 'Building Yadoms Package'
-- make package/fast
+- make package
 - cd ..
 
 # Package binaries
