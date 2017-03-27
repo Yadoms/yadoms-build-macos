@@ -211,7 +211,7 @@ after_success: # and this only on success
 
 #rename folder and package it
 - mv builds yadoms-macos-` cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- tar cjf yadoms-macos-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 yadoms-macos-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- curl --ftp-create-dirs -T yadoms-macos-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf yadoms-macos-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 yadoms-macos-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
+- curl --ftp-create-dirs -T yadoms-macos-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 
