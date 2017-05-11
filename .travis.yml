@@ -186,6 +186,12 @@ script:
 - make all_unity
 - cd ..
 
+# Make Package => should not be executed if "make all_unity" is done before; 
+- cd projects
+- echo 'Building Yadoms Package'
+- make package
+- cd ..
+
 after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
@@ -194,24 +200,6 @@ after_failure:  # this will of course run only on failure
 - curl --ftp-create-dirs -T logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
-# Make Package => should not be executed if "make all_unity" is done before; 
-- cd projects
-- echo 'Building Yadoms Package'
-- make package
-- cd ..
-
-# Package binaries
-- echo 'Package binaries'
-
-# copy config file
-- cp config/yadoms.ini builds
-
-#remove gitignore file
-- rm -f builds/.gitignore
-
-#rename folder and package it
-- mv builds yadoms-macos-` cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- tar cjf yadoms-macos-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 yadoms-macos-`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`
-- curl --ftp-create-dirs -T yadoms-macos-v`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.b${BUILD_BRANCH}.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
-
-
+# Upload packages
+- echo 'Upload package'
+- curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
