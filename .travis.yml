@@ -1,5 +1,5 @@
 os: osx
-osx_image: xcode8.2
+osx_image: xcode9
 language: cpp
 
 #limit to git depth to 1 because don't use any git command in this script
@@ -9,7 +9,9 @@ git:
 before_install:
 # deps
 - echo 'Installing some dependencies'
-- brew update
+#do not call brew update (this may fail) => recommandation from docs
+- if [ ${BREW_UPDATE} = true ]; then brew update; fi
+
 #dont install pcre because already installed
 - brew install swig gammu 
 
