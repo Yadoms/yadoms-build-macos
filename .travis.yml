@@ -200,8 +200,8 @@ after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
 - cd $HOME
-- tar cjf logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 logs
-- curl --ftp-create-dirs -T logs.`cat $HOME/build/yadoms/sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- tar cjf lastlogs.tar.bz2 logs
+- curl --ftp-create-dirs -T lastlogs.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
 # Upload packages
