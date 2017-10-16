@@ -10,12 +10,12 @@ before_install:
 # deps
 - echo 'Installing some dependencies'
 #do not call brew update (this may fail) => recommandation from docs
-- if [ ${BREW_UPDATE} = true ]; then brew update --quiet; fi
+- if [ ${BREW_UPDATE} = true ]; then brew update >/dev/null; fi
 
 script:
 
 #dont install pcre because already installed
-- brew install swig gammu --quiet
+- brew install swig gammu >/dev/null
 
 #make dir
 - mkdir -p $HOME/depsBuild
