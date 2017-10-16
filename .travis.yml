@@ -190,12 +190,6 @@ script:
 - make all_unity
 - cd ..
 
-# Make Package => should not be executed if "make all_unity" is done before; 
-- cd projects
-- echo 'Building Yadoms Package'
-- make package
-- cd ..
-
 after_failure:  # this will of course run only on failure
 # Package logs
 - echo 'Package logs'
@@ -204,6 +198,12 @@ after_failure:  # this will of course run only on failure
 - curl --ftp-create-dirs -T lastlogs.tar.bz2 -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
+# Make Package => should not be executed if "make all_unity" is done before; 
+- cd projects
+- echo 'Building Yadoms Package'
+- make package
+- cd ..
+
 # Upload packages
 - echo 'Upload package'
 - curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
