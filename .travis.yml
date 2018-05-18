@@ -203,7 +203,7 @@ script:
 - sed -i '' -- 's/__version__/'`cat sources/server/changelog.md | head -1 | cut -d ' ' -f 2`'/g' updatepackage/package.json
 - sed -i '' -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
 # changelog
-- cp sources/server/changelog.md updatepackage/changelog.md;fi
+- cp sources/server/changelog.md updatepackage/changelog.md
 - mv builds/package packagetomove
 - mv builds updatepackage/package
 - rm -f updatepackage/package/yadoms.ini
