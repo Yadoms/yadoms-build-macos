@@ -30,7 +30,7 @@ script:
 - echo "coucou" > test.txt
 - /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}
 - /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://${FTP_USER}:${SFTP_PASSWORD}@${YADOMS_UPLOAD_URL}
-- echo "sftp://${FTP_USER}:${SFTP_PASSWORD}@${YADOMS_UPLOAD_URL}"
+- echo "sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}"
 
 #CMake
 - echo 'Installing CMake 3.9.2'
