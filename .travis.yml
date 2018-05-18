@@ -200,10 +200,10 @@ script:
 - mkdir updatepackage
 - cp update/scripts/update.sh updatepackage/update.sh
 - cp ../package.json.in updatepackage/package.json
-- sed -i '' -- 's/__version__/'`cat sources/server/Version.h | grep YadomsVersion | cut -d'"' -f2`'/g' updatepackage/package.json
+- sed -i '' -- 's/__version__/'`cat sources/server/changelog.md | head -1 | cut -d ' ' -f 2`'/g' updatepackage/package.json
 - sed -i '' -- 's/__gitdate__/'`git log -1 --format=%cI `'/g' updatepackage/package.json
 # changelog
-- if [ -e changelog.md ]; then cp changelog.md updatepackage/changelog.md;fi
+- cp sources/server/changelog.md updatepackage/changelog.md;fi
 - mv builds/package packagetomove
 - mv builds updatepackage/package
 - rm -f updatepackage/package/yadoms.ini
