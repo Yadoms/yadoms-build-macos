@@ -223,4 +223,4 @@ after_failure:  # this will of course run only on failure
 after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
-- curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -u $FTP_USER:$FTP_PASSWORD ${YADOMS_UPLOAD_URL}
+- curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -k sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}
