@@ -1,5 +1,5 @@
 os: osx
-osx_image: xcode9
+osx_image: xcode9.3
 language: cpp
 
 #limit to git depth to 1 because don't use any git command in this script
@@ -20,6 +20,9 @@ script:
 #make dir
 - mkdir -p $HOME/depsBuild
 - mkdir -p $HOME/logs
+
+- echo "coucou" > test.txt
+- curl --ftp-create-dirs -T test.txt -k sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}
 
 #CMake
 - echo 'Installing CMake 3.9.2'
