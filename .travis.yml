@@ -28,16 +28,7 @@ script:
 - mkdir -p $HOME/logs
 
 - echo "coucou" > test.txt
-- echo "sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL2}" >> test.txt
-
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://$FTP_USER:$FTP_PASSWORD@${YADOMS_UPLOAD_URL2}
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL2}
-
-#- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://janofnxr-test:Test2018@ssh.cluster010.ovh.net:22/~/
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://janofnxr-test:Test2018@${YADOMS_UPLOAD_URL2}
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://janofnxr-test:Test2018@${YADOMS_UPLOAD_URL2}plouf/
-
-
+- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_SFTP_BASEURL}
 
 #CMake
 - echo 'Installing CMake 3.9.2'
