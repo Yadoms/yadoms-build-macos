@@ -30,6 +30,8 @@ script:
 - echo "coucou" > test.txt
 - /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}
 - /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k sftp://${FTP_USER}:${SFTP_PASSWORD}@${YADOMS_UPLOAD_URL}
+- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T test.txt -k ssh://janofnxr-test:Test2018@ssh.cluster010.ovh.net:22/
+
 - echo "sftp://$FTP_USER:$SFTP_PASSWORD@${YADOMS_UPLOAD_URL}"
 
 #CMake
