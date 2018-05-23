@@ -225,10 +225,10 @@ after_failure:  # this will of course run only on failure
 - echo 'Package logs'
 - cd $HOME
 - tar cjf lastlogs.tar.bz2 logs
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T lastlogs.tar.bz2 -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_SFTP_BASEURL}travis_build/macos/
+- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T lastlogs.tar.bz2 -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL}
 
 after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
-- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_SFTP_BASEURL}travis_build/macos/
+- /usr/local/opt/curl/bin/curl --ftp-create-dirs -T "{$(echo builds/package/* | tr ' ' ',')}" -k sftp://${FTP_USER}:${FTP_PASSWORD}@${YADOMS_UPLOAD_URL}
 
