@@ -24,7 +24,8 @@ script:
 # TODO virer - brew install curl --with-libssh2
 - brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
 - ls > print.txt
-- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt'
+- cat print.txt
+- sshpass -p ${FTP_PASSWORD} sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt'
 
 #make dir
 - mkdir -p $HOME/depsBuild
