@@ -231,6 +231,7 @@ after_failure:  # this will of course run only on failure
 after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
-- echo "{$(echo builds/package/* | tr ' ' ',')}"
+- echo "$(echo builds/package/*)"
 - export SSHPASS=${FTP_PASSWORD}
-- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< "{$(echo builds/package/* | tr ' ' ',')}"
+- echo $SSHPASS
+- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< "mput $(echo builds/package/*)"
