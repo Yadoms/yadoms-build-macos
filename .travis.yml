@@ -18,10 +18,11 @@ script:
 - brew install swig gammu >/dev/null
 
 # Step 1: install libssh2 to allow curl configuration
-- brew install libssh2
+# TODO virer - brew install libssh2
 
 # Step 2: Install cURL with libssh2 support (consequently with SFTP support as well)
-- brew install curl --with-libssh2
+# TODO virer - brew install curl --with-libssh2
+- brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
 
 #make dir
 - mkdir -p $HOME/depsBuild
