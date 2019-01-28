@@ -23,6 +23,8 @@ script:
 # Step 2: Install cURL with libssh2 support (consequently with SFTP support as well)
 # TODO virer - brew install curl --with-libssh2
 - brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
+- ls > print.txt
+- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt'
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -233,6 +235,5 @@ after_success: # and this only on success
 - echo 'Upload package'
 - echo "$(echo builds/package/*)"
 - export SSHPASS=${FTP_PASSWORD}
-- echo $SSHPASS
 - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put builds/package/package.zip'
 # TODO - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
