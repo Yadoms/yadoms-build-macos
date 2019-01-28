@@ -234,4 +234,5 @@ after_success: # and this only on success
 - echo "$(echo builds/package/*)"
 - export SSHPASS=${FTP_PASSWORD}
 - echo $SSHPASS
-- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< "mput $(echo builds/package/*)"
+- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put builds/package/package.zip'
+# TODO - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
