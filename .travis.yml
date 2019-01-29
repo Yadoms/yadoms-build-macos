@@ -24,6 +24,11 @@ script:
 # TODO virer - brew install curl --with-libssh2
 - brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
 - ls > print.txt
+- cat print.txt
+- echo $FTP_USER
+- echo ${FTP_USER}
+- echo $YADOMS_UPLOAD_URL
+- echo ${YADOMS_UPLOAD_URL}
 - export SSHPASS=${FTP_PASSWORD}
 - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt' > out.txt
 - cat out.txt
