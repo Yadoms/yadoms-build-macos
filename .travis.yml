@@ -242,6 +242,6 @@ after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
 - echo "$(echo builds/package/*)"
-- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
+- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput builds/package/*'
 
 # TODO - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
