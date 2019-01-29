@@ -17,22 +17,8 @@ script:
 #dont install pcre because already installed
 - brew install swig gammu >/dev/null
 
-# Step 1: install libssh2 to allow curl configuration
-# TODO virer - brew install libssh2
-
-# Step 2: Install cURL with libssh2 support (consequently with SFTP support as well)
-# TODO virer - brew install curl --with-libssh2
+# Install sshpass to upload generated packages
 - brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
-- ls > print.txt
-- cat print.txt
-- ls > print2.txt
-- cat print2.txt
-- echo $FTP_USER
-- echo ${FTP_USER}
-- echo $YADOMS_UPLOAD_URL
-- echo ${YADOMS_UPLOAD_URL}
-- export SSHPASS=${FTP_PASSWORD}
-- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput print*.txt'
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -240,8 +226,7 @@ after_failure:  # this will of course run only on failure
 
 after_success: # and this only on success
 # Upload packages
-- echo 'Upload package'
-- echo "$(echo builds/package/*)"
+- echo 'Upload packages'
+- ls builds/package/*
+- export SSHPASS=${FTP_PASSWORD}
 - sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput builds/package/*'
-
-# TODO - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
