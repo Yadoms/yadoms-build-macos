@@ -30,8 +30,7 @@ script:
 - echo $YADOMS_UPLOAD_URL
 - echo ${YADOMS_UPLOAD_URL}
 - export SSHPASS=${FTP_PASSWORD}
-- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt' > out.txt
-- cat out.txt
+- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt'
 
 #make dir
 - mkdir -p $HOME/depsBuild
