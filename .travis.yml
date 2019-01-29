@@ -25,12 +25,14 @@ script:
 - brew install https://raw.githubusercontent.com/kadwanev/bigboybrew/master/Library/Formula/sshpass.rb
 - ls > print.txt
 - cat print.txt
+- ls > print2.txt
+- cat print2.txt
 - echo $FTP_USER
 - echo ${FTP_USER}
 - echo $YADOMS_UPLOAD_URL
 - echo ${YADOMS_UPLOAD_URL}
 - export SSHPASS=${FTP_PASSWORD}
-- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put print.txt'
+- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput print*.txt'
 
 #make dir
 - mkdir -p $HOME/depsBuild
@@ -240,6 +242,6 @@ after_success: # and this only on success
 # Upload packages
 - echo 'Upload package'
 - echo "$(echo builds/package/*)"
-- export SSHPASS=${FTP_PASSWORD}
-- sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'put builds/package/package.zip'
+- sshpass -e sftp -oBatchMode=no -oStrictHostKeyChecking=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
+
 # TODO - sshpass -e sftp -oBatchMode=no -b - ${FTP_USER}@${YADOMS_UPLOAD_URL} <<< $'mput $(echo builds/package/*)'
