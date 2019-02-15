@@ -1,5 +1,5 @@
 os: osx
-osx_image: xcode9.3
+osx_image: xcode10.1
 language: cpp
 
 #limit to git depth to 1 because don't use any git command in this script
